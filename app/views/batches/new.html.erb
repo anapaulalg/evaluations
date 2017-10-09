@@ -1,0 +1,14 @@
+<h1>New Batch</h1>
+
+<%= form_for @batch do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :start %>
+  <%= f.text_field :start %>
+
+  <%= f.label :end %>
+  <%= f.text_field :end %>
+
+  <%= f.submit "Create new class" %>
+<% end %>
