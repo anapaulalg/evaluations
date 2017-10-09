@@ -1,5 +1,7 @@
 class Student < ApplicationRecord
-  def self.order_by_name
-    order(:name)
-  end
+  belongs_to :batch
+
+  validates :name, presence: true
+  validates :name, uniqueness: true
+  validates :image, presence: true
 end

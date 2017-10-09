@@ -1,7 +1,5 @@
 class Batch < ApplicationRecord
-  def self.order_by_name
-    order(:name)
-  end
+  has_many :students
 
   validates :name, presence: true
   validates :name, uniqueness: true

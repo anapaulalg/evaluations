@@ -2,3 +2,10 @@
 
 <p>Start at: <%= @batch.start %></p>
 <p>End at: <%= @batch.end %></p>
+
+
+<h1>List of students:</h1>
+
+<% @batch.students.each do |student| %>
+  <p><%= link_to student.name, batch_student_path(student.batch.id, student.id) %></p>
+<% end %>
