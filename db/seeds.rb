@@ -1,7 +1,5 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+batch1 = Batch.create!( { name: "Batch #1", start: "2017/01/01", end: "2017/02/30" } )
+batch2 = Batch.create!( { name: "Batch #2", start: "2017/03/01", end: "2017/04/30" } )
+batch3 = Batch.create!( { name: "Batch #3", start: "2017/05/01", end: "2017/06/30" } )
+batch4 = Batch.create!( { name: "Batch #4", start: "2017/07/01", end: "2017/08/30" } )
+batch5 = Batch.create!( { name: "Batch #5", start: "2017/09/01", end: "2017/10/30" } )
