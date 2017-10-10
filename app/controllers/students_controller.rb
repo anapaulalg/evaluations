@@ -11,4 +11,15 @@ class StudentsController < ApplicationController
   def new
     @student = Student.new
   end
+
+  def create
+    student_params = params.require(:student).permit(:name, :image)
+    @student = Student.new(student_params)
+
+    if @student.save
+       redirect_to @student
+    else
+       render 'new'
+    end
+  end
 end

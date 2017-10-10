@@ -10,3 +10,8 @@
   <p><%= link_to student.name, batch_student_path(student.batch.id, student.id) %></p>
   <%= image_tag student.image %>
 <% end %>
+
+<br><br>
+<%= link_to "[Add New Student]" %>
+<br><br>
+<%= link_to "[All Batches]", root_path %>
