@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
-  get 'pages/home'
-
-  root to: 'pages#home'
+  root to: 'batches#index'
+  resources :pages
   devise_for :users
-  root "batches#index"
 
   resources :batches do
-      resources :students, :only => [:create, :new, :destroy, :show]
+      resources :students, :only => [:create, :new, :destroy, :show, :edit]
   end
 end
