@@ -8,4 +8,5 @@
 
 <% @batch.students.each do |student| %>
   <p><%= link_to student.name, batch_student_path(student.batch.id, student.id) %></p>
+  <%= image_tag student.image %>
 <% end %>
