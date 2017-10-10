@@ -1,8 +1,11 @@
 <div class="panel panel-primary">
-   <div class="panel-heading"> <h1><%= @student.name %></div></h1>
+   <div class="panel-heading">
+     <h1><%= @student.name %></h1>
+     <h4><%= @student.batch.name %></h4>
+     </div>
     <div class="panel-body">
       <%= image_tag @student.image, class: "medium-image-size" %>
     </div>
 </div>
 
-<%= link_to "[All Students]", batch_student_path %>
+<%= link_to "All Students", batch_path(@student.batch.id), class: "btn btn-default" %>

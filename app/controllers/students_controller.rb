@@ -30,7 +30,7 @@ class StudentsController < ApplicationController
     @student = Student.find(params[:id])
 
     if @student.update_attributes(student_params)
-      redirect_to @student
+      redirect_to @student.batch
     else
       render 'edit'
     end
