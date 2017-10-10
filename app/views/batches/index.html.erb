@@ -4,7 +4,9 @@
     <p><%= link_to batch.name, batch_path(batch.id) %></p>
     <p>Start at: <%= batch.start %></p>
     <p>End at: <%= batch.end %></p>
+    <label>Number of students: <%= batch.students.length %></label>
+    <br/><br/>
 <% end %>
 
-<br/><br/>
-<%= link_to "[New Batch]", new_batch_path %>
+<br/>
+<%= link_to "New Batch", new_batch_path, class: "btn btn-primary" %>
