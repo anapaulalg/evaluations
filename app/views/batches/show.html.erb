@@ -3,17 +3,34 @@
 <p>Start at: <%= @batch.start %></p>
 <p>End at: <%= @batch.end %></p>
 
+<br/>
+<button type="button" class="btn btn-danger">ASK A QUESTION</button>
+<br/><br/><br/>
 
-<h1>List of students:</h1>
+<div class="panel panel-primary">
+  <div class="panel-heading"> <h1>Students</h1> </div>
+    <div class="panel-body">
+      <div class="row">
 
-<% @batch.students.each do |student| %>
-  <p><%= link_to student.name, batch_student_path(student.batch.id, student.id) %></p>
-  <%= image_tag student.image %>
-  <%= link_to "[Edit]", edit_batch_student_path(@batch, student) %>
-  <%= link_to "[Delete]", batch_student_path(@batch, student), method: :delete, data: { confirm: "Are you sure?" }  %>
-<% end %>
+        <% @batch.students.each do |student| %>
 
-<br><br>
-<%= link_to "[Add New Student]", new_batch_student_path(@batch) %>
-<br><br>
-<%= link_to "[All Batches]", root_path %>
+      <div class="col-sm-2">
+        <div class="col-sm-12">
+          <p><%= link_to student.name, batch_student_path(student.batch.id, student.id) %></p>
+        </div>
+        <div class="col-sm-12">
+          <%= image_tag student.image, class: "small-image-size" %>
+        </div>
+        <div class="col-sm-12">
+          <%= link_to "Edit", edit_batch_student_path(@batch, student), class: "btn btn-default" %>
+          <%= link_to "Delete", batch_student_path(@batch, student), class: "btn btn-default", method: :delete, data: { confirm: "Are you sure?" }  %>
+        </div>
+      </div>
+        <% end %>
+      </div>
+      </div>
+    </div>
+
+<%= link_to "Add New Student", new_batch_student_path(@batch), class: "btn btn-primary" %>
+<br/><br/>
+<%= link_to "All Batches", root_path, class: "btn btn-default" %>

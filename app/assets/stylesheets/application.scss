@@ -1,2 +1,19 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.small-image-size {
+  max-height: 150px;
+}
+
+.medium-image-size {
+  max-height: 200px;
+}
+
+// .panel > .panel-heading {
+//   background-color: violet;
+//   color: white;
+// }
+//
+// .btn > .btn-primary {
+//   color: violet;
+// }
