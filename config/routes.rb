@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :batches do
-      resources :students, :only => [:create, :new, :destroy, :show, :edit]
+      resources :students
   end
 end

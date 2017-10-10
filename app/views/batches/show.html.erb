@@ -9,4 +9,11 @@
 <% @batch.students.each do |student| %>
   <p><%= link_to student.name, batch_student_path(student.batch.id, student.id) %></p>
   <%= image_tag student.image %>
+  <%= link_to "[Edit]", edit_batch_student_path(@batch, student) %>
+  <%= link_to "[Delete]", batch_student_path(@batch, student), method: :delete, data: { confirm: "Are you sure?" }  %>
 <% end %>
+
+<br><br>
+<%= link_to "[Add New Student]", new_batch_student_path(@batch) %>
+<br><br>
+<%= link_to "[All Batches]", root_path %>
