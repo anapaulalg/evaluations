@@ -1,0 +1,11 @@
+<%= form_for [@student], :url => batch_students_path do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :image %>
+  <%= f.text_field :image %>
+
+  <%= f.submit (@student.new_record? ? "Create" : "Update") %>
+
+<% end %>
