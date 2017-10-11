@@ -5,14 +5,28 @@
      </div>
     <div class="panel-body">
       <%= image_tag @student.image, class: "medium-image-size" %>
+<br/><br/><br/><br/>
 
+  <div class="col-lg-12">
+    <p> Today:
+      <a href="#" class="btn-xl btn-sq btn-success"></a>
+      <a href="#" class="btn-xl btn-sq btn-warning"></a>
+      <a href="#" class="btn-xl btn-sq btn-danger"></a>
+    </p>
+  </div>
+
+      <br/><br/>
       <% @student.dailyevaluations.each do |dailyevaluation| %>
-        <p><%= dailyevaluation.evaluation %></p>
-        <p><%= dailyevaluation.date %></p>
-        <p><%= dailyevaluation.remark %></p>
+        <p>Day: <%= dailyevaluation.date %>
+        <%= dailyevaluation.evaluation %></p>
+        <p>Remark: <%= dailyevaluation.remark %></p>
+        <br/>
       <% end %>
 
     </div>
 </div>
 
 <%= link_to "All Students", batch_path(@student.batch.id), class: "btn btn-default" %>
+
+<br/>
+<hr>
