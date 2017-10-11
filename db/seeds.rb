@@ -23,4 +23,4 @@ student13 = Student.create!( { name: "Daisy", image: "http://res.cloudinary.com/
 student14 = Student.create!( { name: "Donald", image: "http://res.cloudinary.com/djxmmaqyo/image/upload/v1507646497/donald_u8qp2c.jpg", batch: batch1 } )
 
 evaluation1 = Dailyevaluation.create!( { evaluation: "excellent", date: "2017/10/09", remark: "The student is excellent.", student: student1 } )
-evaluation2 = Dailyevaluation.create!( { evaluation: "good", date: "2017/10/10", remark: "The student is goo, need improve.", student: student1 } )
+evaluation2 = Dailyevaluation.create!( { evaluation: "good", date: "2017/10/10", remark: "The student is good, need improve.", student: student1 } ) )
