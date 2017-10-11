@@ -1,5 +1,6 @@
 Student.destroy_all
 Batch.destroy_all
+Dailyevaluation.destroy_all
 
 batch1 = Batch.create!( { name: "Batch #1", start: "2017/09/01", end: "2017/10/30" } )
 batch2 = Batch.create!( { name: "Batch #2", start: "2017/11/01", end: "2017/12/20" } )
@@ -20,3 +21,6 @@ student11 = Student.create!( { name: "Minie", image: "http://res.cloudinary.com/
 student12 = Student.create!( { name: "Mickey", image: "http://res.cloudinary.com/djxmmaqyo/image/upload/c_scale,h_300/v1507631018/mickey_ma0x2a.jpg", batch: batch1 } )
 student13 = Student.create!( { name: "Daisy", image: "http://res.cloudinary.com/djxmmaqyo/image/upload/v1507646497/margarida_el7gbw.jpg", batch: batch1 } )
 student14 = Student.create!( { name: "Donald", image: "http://res.cloudinary.com/djxmmaqyo/image/upload/v1507646497/donald_u8qp2c.jpg", batch: batch1 } )
+
+evaluation1 = Dailyevaluation.create!( { evaluation: "excellent", date: "2017/10/09", remark: "The student is excellent." } )
+evaluation2 = Dailyevaluation.create!( { evaluation: "good", date: "2017/10/10", remark: "The student is goo, need improve." } )
