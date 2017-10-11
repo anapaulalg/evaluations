@@ -5,6 +5,13 @@
      </div>
     <div class="panel-body">
       <%= image_tag @student.image, class: "medium-image-size" %>
+
+      <% @student.dailyevaluations.each do |dailyevaluation| %>
+        <p><%= dailyevaluation.evaluation %></p>
+        <p><%= dailyevaluation.date %></p>
+        <p><%= dailyevaluation.remark %></p>
+      <% end %>
+
     </div>
 </div>
 
