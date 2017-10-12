@@ -1,0 +1,20 @@
+<%= form_for [@dailyevaluation], :url => @dailyevaluation.new_record? ? batch_student_dailyevaluations_path : batch_student_dailyevaluation_path do |f| %>
+
+  <p>Legend:
+  <a href="#" class="btn btn-success">excellent</a>
+  <a href="#" class="btn btn-warning">good</a>
+  <a href="#" class="btn btn-danger">bad</a>
+  </p>
+
+  <%= f.label :evaluation %>
+  <%= f.select :evaluation, [["excellent"], ["good"], ["bad"]], class: "form-control" %><br/>
+
+  <%= f.label :date %>
+  <%= f.text_field :date, class: "form-control" %><br/>
+
+  <%= f.label :remark %><br/>
+  <%= f.text_area :remark, placeholder: "Remark...", class: "form-control" %><br/>
+
+  <%= f.submit (@dailyevaluation.new_record? ? "Create" : "Update") %>
+
+<% end %>

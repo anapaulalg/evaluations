@@ -7,22 +7,7 @@
       <%= image_tag @student.image, class: "medium-image-size" %>
       <br/><br/><br/><br/>
 
-      <div class="col-lg-12">
-        <p> Today:
-          <a href="#" class="btn-xl btn-sq btn-success"></a>
-          <a href="#" class="btn-xl btn-sq btn-warning"></a>
-          <a href="#" class="btn-xl btn-sq btn-danger"></a>
-        </p>
-        <br/>
-        <p> Remark: </p>
-
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Remark...">
-          <button type="submit" class="btn btn-default">Save</button>
-          <button type="submit" class="btn btn-default">Save and next</button>
-        </div>
-      </div>
-      <br/><br/>
+      <%= link_to "Evaluation today", new_batch_student_dailyevaluation_path(@student.batch.id, @student.id), class: "btn btn-primary" %><br/><br/><br/>
 
       <b> Previous Evaluations: <br/><b>
       <br/>
@@ -40,7 +25,7 @@
           <% end %>
         <% end %>
         <p>Remark: <%= dailyevaluation.remark %></p>
-        <button type="button" class="btn btn-default">Edit</button>
+        <%= link_to "Edit", edit_batch_student_dailyevaluation_path(@student.batch.id, @student.id, dailyevaluation.id), class: "btn btn-default" %>
         <br/><br/>
       <% end %>
       </div>
