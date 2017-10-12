@@ -1,0 +1,14 @@
+<%= form_for [@dailyevaluation], :url => batch_student_dailyevaluation_path do |f| %>
+
+  <%= f.label :evaluation %>
+  <%= f.text_field :evaluation %>
+
+  <%= f.label :date %>
+  <%= f.text_field :date %>
+
+  <%= f.label :remark %>
+  <%= f.text_field :remark %>
+
+  <%= f.submit (@dailyevaluation.new_record? ? "Create" : "Update") %>
+
+<% end %>
