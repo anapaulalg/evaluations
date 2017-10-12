@@ -10,13 +10,14 @@ class DailyevaluationsController < ApplicationController
 
   def new
     @dailyevaluation = Dailyevaluation.new
+    @dailyevaluation.date = Date.today
   end
 
   def create
     @dailyevaluation = Dailyevaluation.new(dailyevaluation_params)
     @dailyevaluation.student = Student.find(params[:student_id])
     if @dailyevaluation.save
-       redirect_to @dailyevaluation.student
+       redirect_to batch_student_path(@dailyevaluation.student.batch.id, @dailyevaluation.student.id)
     else
        render 'new'
     end
