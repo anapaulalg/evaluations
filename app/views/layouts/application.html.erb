@@ -12,8 +12,18 @@
     <%= render "shared/navbar" %>
 
     <div class="container">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <% if notice %>
+        <div class="alert alert-info fade in alert-dismissable" style="margin-top:18px;">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+          <%= notice %>
+        </div>
+      <% end %>
+      <% if alert %>
+        <div class="alert alert-info fade in alert-dismissable" style="margin-top:18px;">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+          <%= alert %>
+        </div>
+      <% end %>
       <%= yield %>
     </div>
   </body>
