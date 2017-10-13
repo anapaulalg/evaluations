@@ -1,20 +1,27 @@
-<%= form_for [@dailyevaluation], :url => @dailyevaluation.new_record? ? batch_student_dailyevaluations_path : batch_student_dailyevaluation_path do |f| %>
-
-  <p>Legend:
+<%= form_for [@batch, @student, @dailyevaluation] do |f| %>
+  <hr>
+  <p>Legend:</p>
   <a href="#" class="btn btn-success">excellent</a>
   <a href="#" class="btn btn-warning">good</a>
   <a href="#" class="btn btn-danger">bad</a>
-  </p>
-
-  <%= f.label :evaluation %>
-  <%= f.select :evaluation, [["excellent"], ["good"], ["bad"]], class: "form-control" %><br/>
-
-  <%= f.label :date %>
-  <%= f.text_field :date, class: "form-control" %><br/>
-
-  <%= f.label :remark %><br/>
-  <%= f.text_area :remark, placeholder: "Remark...", class: "form-control" %><br/>
-
-  <%= f.submit (@dailyevaluation.new_record? ? "Create" : "Update") %>
-
+  <hr>
+  <div class="form-group">
+    <%= f.label :evaluation %>
+    <div>
+        <%= f.select :evaluation, [["excellent"], ["good"], ["bad"]], class: "form-control" %><br/>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :date %>
+    <div>
+        <%= f.date_select :date, class: "form-control" %><br/><br/>
+    </div>
+  <div class="form-group">
+    <%= f.label :remark %><br/>
+    <%= f.text_area :remark, placeholder: "Remark...", class: "form-control" %><br/>
+  </div>
+  <div class="form-group">
+    <%= f.submit (@dailyevaluation.new_record? ? "Save" : "Update"), class: "btn btn-primary" %>
+    <%= f.submit (@dailyevaluation.new_record? ? "Save and next" : "Update and next"), name: "save_next", class: "btn btn-primary" %>
+  </div>
 <% end %>

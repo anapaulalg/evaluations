@@ -1,3 +1,6 @@
+<h1>
+  Student
+</h1>
 <div class="panel panel-primary">
    <div class="panel-heading">
      <h1><%= @student.name %></h1>
@@ -7,31 +10,38 @@
       <%= image_tag @student.image, class: "medium-image-size" %>
       <br/><br/><br/><br/>
 
-      <%= link_to "Evaluation today", new_batch_student_dailyevaluation_path(@student.batch.id, @student.id), class: "btn btn-primary" %><br/><br/><br/>
+      <%= link_to "Evaluate Today", new_batch_student_dailyevaluation_path(@student.batch, @student), class: "btn btn-primary" %><br/>
 
-      <b> Previous Evaluations: <br/><b>
-      <br/>
-      <p><% @student.dailyevaluations.each do |dailyevaluation| %></p>
-        <p>Day: <%= dailyevaluation.date %></p>
-        <% if dailyevaluation.evaluation %>
-          <% if dailyevaluation.evaluation == "excellent" %>
-            <a href="#" class="btn btn-success"></a>
+      <% if @student.dailyevaluations.length > 0 %>
+        <h2>Previous Evaluations:</h2>
+        <% @student.dailyevaluations.each do |dailyevaluation| %>
+          <hr>
+          <label>Evaluation: </label>
+          <% if dailyevaluation.evaluation %>
+            <% if dailyevaluation.evaluation == "excellent" %>
+              <a href="#" class="btn btn-success"></a>
+            <% elsif dailyevaluation.evaluation == "good" %>
+              <a href="#" class="btn btn-warning"></a>
+            <% elsif dailyevaluation.evaluation == "bad" %>
+              <a href="#" class="btn btn-danger"></a>
+            <% end %>
+          <% else %>
+            <a href="#" class="btn btn-default"></a>
           <% end %>
-          <% if dailyevaluation.evaluation == "good" %>
-            <a href="#" class="btn btn-warning"></a>
-          <% end %>
-          <% if dailyevaluation.evaluation == "bad" %>
-            <a href="#" class="btn btn-danger"></a>
-          <% end %>
+
+          <br/>
+          <br/>
+          <p>Day: <%= dailyevaluation.date %></p>
+          <p>Remark: <%= dailyevaluation.remark %></p>
+          <%= link_to "Edit", edit_batch_student_dailyevaluation_path(@student.batch, @student, dailyevaluation), class: "btn btn-default" %>
         <% end %>
-        <p>Remark: <%= dailyevaluation.remark %></p>
-        <%= link_to "Edit", edit_batch_student_dailyevaluation_path(@student.batch.id, @student.id, dailyevaluation.id), class: "btn btn-default" %>
-        <br/><br/>
+      <% else %>
+        <br>
+        <p>No evaluations done for this student yet!</p>
       <% end %>
-      </div>
     </div>
+  </div>
 
 <%= link_to "All Students", batch_path(@student.batch.id), class: "btn btn-default" %>
-
 <br/>
-<hr>
+<br/>
