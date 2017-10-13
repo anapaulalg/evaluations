@@ -1,14 +1,26 @@
 <h1>New Batch</h1>
 
 <%= form_for @batch do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+  </div>
 
-  <%= f.label :start %>
-  <%= f.text_field :start %>
+  <div class="form-group">
+      <%= f.label :start %>
+      <div>
+          <%= f.date_select :start, class: "form-control" %>
+      </div>
+  </div>
 
-  <%= f.label :end %>
-  <%= f.text_field :end %>
+  <div class="form-group">
+      <%= f.label :end %>
+      <div>
+          <%= f.date_select :end, class: "form-control" %>
+      </div>
+  </div>
 
-  <%= f.submit "Create new class" %>
+  <div class="form-group">
+      <%= f.submit "Create new class", class:"btn btn-primary" %>
+  </div>
 <% end %>

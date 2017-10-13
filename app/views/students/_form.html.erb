@@ -1,11 +1,13 @@
-<%= form_for [@student], :url => batch_student_path do |f| %>
-
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-
-  <%= f.label :image %>
-  <%= f.text_field :image %>
-
-  <%= f.submit (@student.new_record? ? "Create" : "Update") %>
-
+<%= form_for [@batch, @student] do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :image %>
+    <%= f.text_field :image, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.submit (@student.new_record? ? "Create" : "Update"), class:"btn btn-primary" %>
+  </div>
 <% end %>
