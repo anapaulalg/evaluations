@@ -1,57 +1,60 @@
 <h1><%= @batch.name %></h1>
-
+<hr>
 <p>Start at: <%= @batch.start %></p>
 <p>End at: <%= @batch.end %></p>
 <label>Number of students: <%= @batch.students.length %></label>
 
-<br/><br/>
-<button type="button" class="btn btn-primary">ASK A QUESTION</button>
-<br/><br/>
-
-<div class="progress">
-  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= @excellent %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @excellent %>%;"><%= @excellent %>%</div>
-  <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<%= @good %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @good %>%;"><%= @good %>%</div>
-  <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<%= @bad %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @bad %>%;"><%= @bad %>%</div>
-</div>
-
-<div class="panel panel-primary">
-  <div class="panel-heading">
-    <h1>Students</h1>
+<br/>
+<br/>
+<% if @batch.students.length > 0 %>
+  <%= link_to "ASK A QUESTION", batch_askquestion_path(@batch), class: "btn btn-primary" %>
+  <br/>
+  <hr>
+  <div class="progress">
+    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= @excellent %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @excellent %>%;"><%= @excellent %>%</div>
+    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<%= @good %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @good %>%;"><%= @good %>%</div>
+    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<%= @bad %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @bad %>%;"><%= @bad %>%</div>
   </div>
-  <div class="panel-body">
-    <div class="row">
-      <% @batch.students.each do |student| %>
-        <div class="col-sm-2">
-          <div class="col-sm-12">
-            <p><%= link_to student.name, batch_student_path(student.batch.id, student.id) %></p>
-            <% if student.dailyevaluations.last %>
-              <% if student.dailyevaluations.last.evaluation == "excellent" %>
-                <a href="#" class="btn btn-success"></a>
+
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h1>Students</h1>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <% @batch.students.each do |student| %>
+          <div class="col-sm-2">
+            <div class="col-sm-12">
+              <p><%= link_to student.name, batch_student_path(student.batch.id, student.id) %></p>
+              <% last_evaluation = student.dailyevaluations.order(:date).last %>
+              <% if last_evaluation %>
+                <% if last_evaluation.evaluation == "excellent" %>
+                  <a href="#" class="btn btn-success"></a>
+                <% end %>
+                <% if last_evaluation.evaluation == "good" %>
+                  <a href="#" class="btn btn-warning"></a>
+                <% end %>
+                <% if last_evaluation.evaluation == "bad" %>
+                  <a href="#" class="btn btn-danger"></a>
+                <% end %>
+              <% else %>
+                <a href="#" class="btn btn-default"></a>
               <% end %>
-              <% if student.dailyevaluations.last.evaluation == "good" %>
-                <a href="#" class="btn btn-warning"></a>
-              <% end %>
-              <% if student.dailyevaluations.last.evaluation == "bad" %>
-                <a href="#" class="btn btn-danger"></a>
-              <% end %>
-            <% end %>
+            </div>
+            <div class="col-sm-12">
+              <%= image_tag student.image, class: "small-image-size" %>
+            </div>
+            <div class="col-sm-12">
+              <%= link_to "Edit", edit_batch_student_path(@batch, student), class: "btn btn-default" %>
+              <%= link_to "Delete", batch_student_path(@batch, student), class: "btn btn-default", method: :delete, data: { confirm: "Are you sure?" }  %>
+            </div>
           </div>
-          <div class="col-sm-12">
-            <%= image_tag student.image, class: "small-image-size" %>
-          </div>
-          <div class="col-sm-12">
-            <%= link_to "Edit", edit_batch_student_path(@batch, student), class: "btn btn-default" %>
-            <%= link_to "Delete", batch_student_path(@batch, student), class: "btn btn-default", method: :delete, data: { confirm: "Are you sure?" }  %>
-          </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
-
+<% end %>
 <%= link_to "Add New Student", new_batch_student_path(@batch), class: "btn btn-primary" %>
-<br/><br/>
 <%= link_to "All Batches", root_path, class: "btn btn-default" %>
-
 <br/>
-<hr>
+<br/>

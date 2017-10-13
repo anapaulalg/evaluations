@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :batches do
+      get 'askquestion', to: 'batches#ask_question'
       resources :students do
         resources :dailyevaluations
     end
