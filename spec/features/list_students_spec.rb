@@ -1,10 +1,10 @@
 # require 'rails_helper'
 #
-# describe "View list of students" do
+# describe "View the list of students" do
 #   before { login_as user }
 #
 #   it "shows all students" do
-#     visit root_path
-#     expect(page).to have_text("List of students:")
+#     visit batch_student_path
+#     expect(page).to have_text("Students")
 #   end
 # end
