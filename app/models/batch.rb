@@ -12,7 +12,7 @@ class Batch < ApplicationRecord
     grades = ['bad', 'good', 'excellent']
     weights = [0.50, 0.33, 0.17]
 
-    probabilities = weights.map { |w| (Float w) / weights.reduce(:+) }
+    probabilities = weights.map { |w| w / weights.reduce(:+) }
     weighted_list = grades.zip(probabilities).to_h
     random_weighted_grade = weighted_list.max_by { |_, weight| rand ** (1.0 / weight) }.first
 
