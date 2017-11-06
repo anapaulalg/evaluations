@@ -1,24 +1,15 @@
-# README
+# Evaluations
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is an evaluation tool for teachers.
 
-Things you may want to cover:
+This program allows to the admin: create batches, add and delete students, evaluate the students per day (giving a color green, yellow or red and optional remarks) and randomly choose one student. This random system is based on a probability and takes into consideration the last evaluation of each student. The red students have a 50% chance of being chosen, yellow students 33% and green students, 17%.
 
-* Ruby version
+This project was part of my learning in Codaisseur.
 
-* System dependencies
+# Running application
 
-* Configuration
+To run this app, clone the repository and type in the terminal:
 
-* Database creation
+-rails db:create db:migrate db:seed
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+-rails s
